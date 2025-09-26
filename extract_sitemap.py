@@ -44,6 +44,6 @@ def extract_head(article_urls: list[str])->list[str]:
     for url in article_urls:
         response = requests.get(url)
         soup = BeautifulSoup(response.content, 'html.parser')
-        head = soup.find('h1', class_='entry-title').text if soup.find('h1', class_='entry-title') else 'No title found'
+        head = soup.find('h2', class_='entry-title').text if soup.find('h1', class_='entry-title') else 'No title found'
         heads.append(head)
     return heads
